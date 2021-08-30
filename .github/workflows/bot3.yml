@@ -84,7 +84,7 @@ jobs:
         run: |
           export ABC="$(pwd)"
           sudo mkdir -p /usr/java/oracle; cd /usr/java/oracle
-          sudo wget 'https://github.com/PriiiiyoGSIs/Bot3-Workflow/releases/download/J16/jdk-16.0.1_linux-x64_bin.tar.gz' -O linux.tar.gz >> /dev/null 2> /dev/null
+          sudo wget 'https://github.com/VeloshGSIs/Bot3-Workflow/releases/download/J16/jdk-16.0.1_linux-x64_bin.tar.gz' -O linux.tar.gz >> /dev/null 2> /dev/null
           sudo tar -xzvf linux.tar.gz
           sudo update-alternatives --install "/usr/bin/java" "java" "/usr/java/oracle/jdk-16.0.1/bin/java" 1
           sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/java/oracle/jdk-16.0.1/bin/javac" 1
