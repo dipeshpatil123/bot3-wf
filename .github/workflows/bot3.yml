@@ -81,7 +81,7 @@ jobs:
           echo "bot-token=${{ secrets.GH }}" >> configs.prop
           echo "bot-username=PriiiiyoGSIs_Bot" >> configs.prop
           echo "bot-master=1032152179" >> configs.prop
-          echo "privateChat=-1001401549638" >> configs.prop
+          echo "privateChat=-1001212338973" >> configs.prop
           echo "requestChat=-1001212338973,-1001649321386" >> configs.prop
           echo "publicChannel=PriiiiyoGSI" >> configs.prop
           echo "bot-sf-pass=${{ secrets.PASS_SF }}" >> sf-creds.prop
