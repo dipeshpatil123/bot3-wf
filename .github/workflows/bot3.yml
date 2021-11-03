@@ -1,4 +1,4 @@
-name: Bot3
+name: Bot3+t
 on:
   push:
     branches: [stag]
