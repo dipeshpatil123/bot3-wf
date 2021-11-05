@@ -34,8 +34,8 @@ jobs:
           git config --global user.email ${{ secrets.PVT_EM }}
           git config --global pull.rebase false
           git config --global credential.helper store
-          echo "https://priiiiyo:${{ secrets.GH_TTH }}@github.com" > ~/.git-credentials
-          sudo echo "https://priiiiyo:${{ secrets.GH_TTH }}@github.com" > ~/.git-credentials
+          echo "https://Daffety:${{ secrets.GH_TTH }}@github.com" > ~/.git-credentials
+          sudo echo "https://Daffety:${{ secrets.GH_TTH }}@github.com" > ~/.git-credentials
 
       - name: Clone workflow
         continue-on-error: true
@@ -82,7 +82,7 @@ jobs:
           echo "bot-username=PriiiiyoGSIs_Bot" >> configs.prop
           echo "bot-master=1032152179" >> configs.prop
           echo "privateChat=-1001212338973" >> configs.prop
-          echo "requestChat=-1001212338973,-1001649321386" >> configs.prop
+          echo "requestChat=-1001212338973,-1001401549638" >> configs.prop
           echo "publicChannel=PriiiiyoGSI" >> configs.prop
           echo "bot-sf-pass=${{ secrets.PASS_SF }}" >> sf-creds.prop
           echo "bot-sf-proj=priyogsis" >> sf-creds.prop
