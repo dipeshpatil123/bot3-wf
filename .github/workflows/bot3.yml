@@ -2,6 +2,7 @@ name: PriiiiyoGSI Bot3
 on:
   push:
     branches: [stag]
+  workflow_dispatch:
 
 env:
   TZ: America/Recife
