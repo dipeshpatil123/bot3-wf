@@ -31,12 +31,12 @@ jobs:
 
       - name: Setup git Environment
         run: |
-          git config --global user.name "priiiiyo"
+          git config --global user.name "iamSMMH"
           git config --global user.email ${{ secrets.PVT_EM }}
           git config --global pull.rebase false
           git config --global credential.helper store
-          echo "https://priiiiyo:${{ secrets.GH_TTH }}@github.com" > ~/.git-credentials
-          sudo echo "https://priiiiyo:${{ secrets.GH_TTH }}@github.com" > ~/.git-credentials
+          echo "https://iamSMMH:${{ secrets.GH_TTH }}@github.com" > ~/.git-credentials
+          sudo echo "https://iamSMMH:${{ secrets.GH_TTH }}@github.com" > ~/.git-credentials
 
       - name: Clone workflow
         continue-on-error: true
@@ -91,7 +91,7 @@ jobs:
           echo "bot-announcement-id=-1001405823755" >> sf-creds.prop
           echo "bot-sf-host=frs.sourceforge.net" >> sf-creds.prop
           echo "bot-send-announcement=true" >> sf-creds.prop
-          echo '["1032152179","783675636"]' >> allowed2port.json
+          echo '["1032152179","783675636","530626215"]' >> allowed2port.json
           
       - name: Install native-image & Rebuild Bot³+t prebuilt Jar as native code
         run: |
