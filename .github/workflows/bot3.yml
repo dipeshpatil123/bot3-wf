@@ -31,12 +31,12 @@ jobs:
 
       - name: Setup git Environment
         run: |
-          git config --global user.name "iamSMMH"
+          git config --global user.name "priiiiyo"
           git config --global user.email ${{ secrets.PVT_EM }}
           git config --global pull.rebase false
           git config --global credential.helper store
-          echo "https://iamSMMH:${{ secrets.GH_TTH }}@github.com" > ~/.git-credentials
-          sudo echo "https://iamSMMH:${{ secrets.GH_TTH }}@github.com" > ~/.git-credentials
+          echo "https://priiiiyo:${{ secrets.GH_TTH }}@github.com" > ~/.git-credentials
+          sudo echo "https://priiiiyo:${{ secrets.GH_TTH }}@github.com" > ~/.git-credentials
 
       - name: Clone workflow
         continue-on-error: true
@@ -105,7 +105,7 @@ jobs:
         run: |
           sudo apt install openjdk-8-jdk -y >> /dev/null 2>&1
           cd Bot3/build/libs
-          git clone --recurse-submodules https://github.com/PriiiiyoGSIs/ErfanGSIs.git ErfanGSIs -b master
+          git clone --recurse-submodules https://github.com/PriiiiyoGSIs/ErfanGSIs.git -b master
           pip3 install wheel setuptools
           pip3 install backports.lzma docopt zstandard bsdiff4 protobuf pycrypto
           sudo pip3 install --upgrade protobuf
