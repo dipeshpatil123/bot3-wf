@@ -107,8 +107,7 @@ jobs:
       - name: Run the Bot³+t
         continue-on-error: true
         timeout-minutes: 315
-        run: cd Bot3/build/libs && sudo /usr/oracle/java/graalvm-ce-java16-21.2.0/bin/java -jar app-0.1-all.jar
-
+        run: cd Bot3/build/libs && sudo ./BoboBot-1.7.0-all
       - name: Re-run Bot3 workflow
         continue-on-error: true
         timeout-minutes: 5
