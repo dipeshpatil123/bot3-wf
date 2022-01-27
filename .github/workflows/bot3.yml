@@ -73,7 +73,7 @@ jobs:
           JAVA_HOME: /usr/oracle/java/graalvm-ce-java16-21.2.0
         run: |
           git clone https://github.com/PriiiiyoGSIs/Bot3
-          cd Hakalle && ./gradlew shadowJar; cd app/build/libs
+          cd Bot3 && ./gradlew shadowJar; cd build/libs
           mkdir configs && cd configs
           touch configs.prop
           touch allowed2port.json
@@ -96,7 +96,7 @@ jobs:
         timeout-minutes: 6
         run: |
           sudo apt install openjdk-8-jdk -y >> /dev/null 2>&1
-          cd Hakalle/app/build/libs
+          cd Bot3/build/libs
           git clone --recurse-submodules https://github.com/PriiiiyoGSIs/ErfanGSIs-PriiiiyoGSIs ErfanGSIs -b velan/stable
           cd ErfanGSIs/tools/ROM_resigner && sed -i "s|signjarcmd = \"java -jar|signjarcmd = \"/usr/lib/jvm/java-1.8.0-openjdk-amd64/bin/java -jar|g" resign.py
           pip3 install wheel setuptools
