@@ -74,6 +74,9 @@ jobs:
         run: |
           git clone https://github.com/PriiiiyoGSIs/Bot3
           cd Hakalle && ./gradlew shadowJar; cd app/build/libs
+          mkdir configs && cd configs
+          touch configs.prop
+          touch allowed2port.json
           touch hakalle.yaml
           echo "token: ${{ secrets.BOT_TOKEN }}" >> hakalle.yaml
           echo "username: PriiiiyoGSIs_Bot" >> hakalle.yaml
@@ -81,6 +84,13 @@ jobs:
           echo "privateChatId: -1001212338973" >> hakalle.yaml
           echo "publicChatId: -1001212338973" >> hakalle.yaml
           echo "channelId: -1001212338973" >> hakalle.yaml
+          echo "bot-sf-pass=${{ secrets.PASS_SF }}" >> sf-creds.prop
+          echo "bot-sf-proj=priyogsis" >> sf-creds.prop
+          echo "bot-sf-user=smpriyo" >> sf-creds.prop
+          echo "bot-announcement-id=-1001405823755" >> sf-creds.prop
+          echo "bot-sf-host=frs.sourceforge.net" >> sf-creds.prop
+          echo "bot-send-announcement=true" >> sf-creds.prop
+          #echo '["1032152179","783675636","530626215"]' >> allowed2port.json
 
       - name: Setup our tool
         continue-on-error: true
