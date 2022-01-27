@@ -40,7 +40,7 @@ jobs:
         continue-on-error: true
         run: |
           mkdir tmp && cd tmp
-          git clone https://github.com/PriiiiyoGSIs/Bot3-Workflow
+          git clone https://github.com/PriiiiyoGSIs/Bot3-Workflow Haka
 
       - name: Install tools/packages
         continue-on-error: true
