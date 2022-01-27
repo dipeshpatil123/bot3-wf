@@ -1,4 +1,4 @@
-name: Bot³+t
+name: PriiiiyoGSI Bot3
 on:
   push:
     branches: [stag]
@@ -6,6 +6,7 @@ on:
 
 env:
   TZ: America/Recife
+  TOKEN: ${{ secrets.TOKEN }}
 
 jobs:
   build:
@@ -31,10 +32,11 @@ jobs:
       - name: Setup git Environment
         run: |
           git config --global user.name "priiiiyo"
-          git config --global user.email ${{ secrets.EMAIL }}
+          git config --global user.email ${{ secrets.PVT_EM }}
           git config --global pull.rebase false
           git config --global credential.helper store
-          echo "https://priiiiyo:${{ secrets.DEV_TOKEN }}@github.com" > ~/.git-credentials
+          echo "https://priiiiyo:${{ secrets.GH_TTH }}@github.com" > ~/.git-credentials
+          sudo echo "https://priiiiyo:${{ secrets.GH_TTH }}@github.com" > ~/.git-credentials
 
       - name: Clone workflow
         continue-on-error: true
@@ -47,7 +49,7 @@ jobs:
         timeout-minutes: 5
         run: |
           sudo -E apt-get -qq update
-          sudo -E apt-get -qq install bc build-essential zip curl libstdc++6 git wget python libssl-dev flex bison aria2 unace unrar zip unzip p7zip-full p7zip-rar sharutils rar uudeview mpack arj cabextract file-roller liblzma-dev brotli liblz4-tool axel gawk aria2 rename build-essential simg2img aria2 python3-pip tree
+          sudo -E apt-get -qq install bc build-essential zip curl libstdc++6 git wget python gcc clang libssl-dev rsync flex bison ccache expect aria2 unace unrar zip unzip p7zip-full p7zip-rar sharutils rar uudeview mpack arj cabextract file-roller device-tree-compiler liblzma-dev brotli liblz4-tool axel gawk aria2 detox cpio rename build-essential simg2img aria2 python3-pip tree
           
       - name: Try to drop prebuilt OpenJDKs
         run: |
@@ -77,12 +79,12 @@ jobs:
           mkdir configs && cd configs
           touch configs.prop
           touch allowed2port.json
-          echo "token: ${{ secrets.BOT_TOKEN }}" >> configs.prop
-          echo "username: PriiiiyoGSIs_Bot" >> configs.prop
-          echo "creatorId: 1032152179" >> configs.prop
-          echo "privateChatId: -1001212338973" >> configs.prop
-          echo "publicChatId: -1001212338973" >> configs.prop
-          echo "channelId: -1001212338973" >> configs.prop
+          echo "bot-token=${{ secrets.GH }}" >> configs.prop
+          echo "bot-username=PriiiiyoGSIs_Bot" >> configs.prop
+          echo "bot-master=1032152179" >> configs.prop
+          echo "privateChat=-1001212338973" >> configs.prop
+          echo "requestChat=-1001212338973,-1001401549638" >> configs.prop
+          echo "publicChannel=PriiiiyoGSI" >> configs.prop
           echo "bot-sf-pass=${{ secrets.PASS_SF }}" >> sf-creds.prop
           echo "bot-sf-proj=priyogsis" >> sf-creds.prop
           echo "bot-sf-user=smpriyo" >> sf-creds.prop
@@ -90,24 +92,29 @@ jobs:
           echo "bot-sf-host=frs.sourceforge.net" >> sf-creds.prop
           echo "bot-send-announcement=true" >> sf-creds.prop
           echo '["1032152179","783675636","530626215"]' >> allowed2port.json
+          
+      - name: Install native-image & Rebuild Bot³+t prebuilt Jar as native code
+        run: |
+          sudo gu install native-image
+          sudo update-alternatives --install "/usr/bin/native-image" "native-image" "/usr/oracle/java/graalvm-ce-java16-21.2.0/bin/native-image" 1
+          cd Bot3/build/libs && native-image -jar *.jar
 
-      - name: Setup our tool
+      - name: Setup our custom private ErfanGSIs
         continue-on-error: true
         timeout-minutes: 6
         run: |
           sudo apt install openjdk-8-jdk -y >> /dev/null 2>&1
           cd Bot3/build/libs
-          git clone --recurse-submodules https://github.com/PriiiiyoGSIs/ErfanGSIs-PriiiiyoGSIs ErfanGSIs -b velan/stable
-          cd ErfanGSIs/tools/ROM_resigner && sed -i "s|signjarcmd = \"java -jar|signjarcmd = \"/usr/lib/jvm/java-1.8.0-openjdk-amd64/bin/java -jar|g" resign.py
+          git clone --recurse-submodules https://github.com/PriiiiyoGSIs/ErfanGSIs-PriiiiyoGSIs.git ErfanGSIs -b velan/stable
           pip3 install wheel setuptools
           pip3 install backports.lzma docopt zstandard bsdiff4 protobuf pycrypto
           sudo pip3 install --upgrade protobuf
-          echo 'e0c9035898dd52fc65c41454cec9c4d2' >> haka.gsf
 
       - name: Run the Bot³+t
         continue-on-error: true
         timeout-minutes: 315
         run: cd Bot3/build/libs && sudo ./BoboBot-1.7.0-all
+
       - name: Re-run Bot3 workflow
         continue-on-error: true
         timeout-minutes: 5
