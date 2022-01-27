@@ -1,4 +1,4 @@
-name: Hakalle
+name: Bot³+t
 on:
   push:
     branches: [stag]
@@ -40,7 +40,7 @@ jobs:
         continue-on-error: true
         run: |
           mkdir tmp && cd tmp
-          git clone https://github.com/PriiiiyoGSIs/Bot3-Workflow Haka
+          git clone https://github.com/PriiiiyoGSIs/Bot3-Workflow Bobot
 
       - name: Install tools/packages
         continue-on-error: true
@@ -68,7 +68,7 @@ jobs:
           sudo update-alternatives --install "/usr/bin/java" "java" "/usr/oracle/java/graalvm-ce-java16-21.2.0/bin/java" 1
           sudo update-alternatives --install "/usr/bin/gu" "gu" "/usr/oracle/java/graalvm-ce-java16-21.2.0/bin/gu" 1
       
-      - name: Clone, Compile & Setup Hakalle
+      - name: Clone, Compile & Setup Bot³+t
         env:
           JAVA_HOME: /usr/oracle/java/graalvm-ce-java16-21.2.0
         run: |
@@ -105,15 +105,15 @@ jobs:
           sudo pip3 install --upgrade protobuf
           echo 'e0c9035898dd52fc65c41454cec9c4d2' >> haka.gsf
 
-      - name: Run the Hakalle
+      - name: Run the Bot³+t
         continue-on-error: true
         timeout-minutes: 315
-        run: cd Hakalle/app/build/libs && sudo /usr/oracle/java/graalvm-ce-java16-21.2.0/bin/java -jar app-0.1-all.jar
+        run: cd Bot3/build/libs && sudo /usr/oracle/java/graalvm-ce-java16-21.2.0/bin/java -jar app-0.1-all.jar
 
-      - name: Re-run Hakalle workflow
+      - name: Re-run Bot3 workflow
         continue-on-error: true
         timeout-minutes: 5
         run: |
-          cd tmp/Haka
-          git commit --allow-empty -m "[LOOP] Re-run Hakalle workflow"
+          cd tmp/Bobot
+          git commit --allow-empty -m "[LOOP] Re-run Bot³+t workflow"
           git push -f
