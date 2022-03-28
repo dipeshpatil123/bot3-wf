@@ -1,4 +1,4 @@
-name: PriiiiyoGSI Bot3
+name: DipeshGSI Bot3
 on:
   push:
     branches: [stag]
@@ -31,18 +31,18 @@ jobs:
 
       - name: Setup git Environment
         run: |
-          git config --global user.name "priiiiyo"
-          git config --global user.email ${{ secrets.PVT_EM }}
+          git config --global user.name "daksh1684"
+          git config --global user.email ${{ secrets.GHMAIL }}
           git config --global pull.rebase false
           git config --global credential.helper store
-          echo "https://priiiiyo:${{ secrets.GH_TTH }}@github.com" > ~/.git-credentials
-          sudo echo "https://priiiiyo:${{ secrets.GH_TTH }}@github.com" > ~/.git-credentials
+          echo "https://daksh1684:${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
+          sudo echo "https://daksh1684:${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
 
       - name: Clone workflow
         continue-on-error: true
         run: |
           mkdir tmp && cd tmp
-          git clone https://github.com/PriiiiyoGSIs/Bot3-Workflow Bobot
+          git clone https://github.com/daksh1684/Bot3-Workflow Bobot
 
       - name: Install tools/packages
         continue-on-error: true
@@ -74,24 +74,24 @@ jobs:
         env:
           JAVA_HOME: /usr/oracle/java/graalvm-ce-java16-21.2.0
         run: |
-          git clone https://github.com/PriiiiyoGSIs/Bot3
+          git clone https://github.com/dipeshpatil123/Bot3
           cd Bot3 && ./gradlew shadowJar; cd build/libs
           mkdir configs && cd configs
           touch configs.prop
           touch allowed2port.json
-          echo "bot-token=${{ secrets.GH }}" >> configs.prop
-          echo "bot-username=PriiiiyoGSIs_Bot" >> configs.prop
-          echo "bot-master=1032152179" >> configs.prop
-          echo "privateChat=-1001212338973" >> configs.prop
-          echo "requestChat=-1001212338973,-1001401549638" >> configs.prop
-          echo "publicChannel=PriiiiyoGSI" >> configs.prop
-          echo "bot-sf-pass=${{ secrets.PASS_SF }}" >> sf-creds.prop
-          echo "bot-sf-proj=priyogsis" >> sf-creds.prop
-          echo "bot-sf-user=smpriyo" >> sf-creds.prop
-          echo "bot-announcement-id=-1001405823755" >> sf-creds.prop
+          echo "bot-token=${{ secrets.BOTKEY }}" >> configs.prop
+          echo "bot-username=reflection_gsibot" >> configs.prop
+          echo "bot-master=5080501897" >> configs.prop
+          echo "privateChat=-1001657261845" >> configs.prop
+          echo "requestChat=-1001657261845" >> configs.prop
+          echo "publicChannel=dpgsi_updates" >> configs.prop
+          echo "bot-sf-pass=${{ secrets.SFPASS }}" >> sf-creds.prop
+          echo "bot-sf-proj=dpgsi" >> sf-creds.prop
+          echo "bot-sf-user=dp014875" >> sf-creds.prop
+          echo "bot-announcement-id=-1001616595070" >> sf-creds.prop
           echo "bot-sf-host=frs.sourceforge.net" >> sf-creds.prop
           echo "bot-send-announcement=true" >> sf-creds.prop
-          echo '["1032152179","783675636","530626215"]' >> allowed2port.json
+          echo '["1983773985","924605959","1794484998","1428791481","2105560540"]' >> allowed2port.json
           
       - name: Install native-image & Rebuild Bot³+t prebuilt Jar as native code
         run: |
