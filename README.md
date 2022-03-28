@@ -5,5 +5,5 @@ This workflow aims to run the Bot3 jar file in loop, every 6 hours this workflow
 
 ## Credits
 
-- [Bot3](https://github.com/VeloshGSIs/Bot3)
-- [Nippon](https://github.com/nnippon)
+- [Bot3](https://github.com/daksh1684/Bot3)
+- [Dipesh](https://github.com/dipeshpatil123)
